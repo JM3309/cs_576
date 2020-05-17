@@ -1,0 +1,176 @@
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import torchvision
+import torchvision.transforms as transforms
+import torch.optim as optim
+import time
+import os
+from torch.autograd import Variable
+
+transform = transforms.Compose(
+    [
+     transforms.RandomHorizontalFlip(),
+     transforms.RandomGrayscale(),
+     transforms.ToTensor(),
+     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+
+transform1 = transforms.Compose(
+    [
+     transforms.ToTensor(),
+     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+
+trainset = torchvision.datasets.CIFAR10(root='./data', train=True,
+                                        download=True, transform=transform)
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=100,
+                                          shuffle=True, num_workers=2)
+
+testset = torchvision.datasets.CIFAR10(root='./data', train=False,
+                                       download=True, transform=transform1)
+testloader = torch.utils.data.DataLoader(testset, batch_size=50,
+                                         shuffle=False, num_workers=2)
+
+classes = ('plane', 'car', 'bird', 'cat',
+           'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
+
+
+class CNN(nn.Module):
+    """CNN."""
+
+    def __init__(self):
+        """CNN Builder."""
+        super(CNN, self).__init__()
+
+        self.conv_layer = nn.Sequential(
+
+            # Conv Layer block 1
+            nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3, padding=1),
+            nn.BatchNorm2d(32),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, padding=1),
+            nn.ReLU(inplace=True),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+
+            # Conv Layer block 2
+            nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, padding=1),
+            nn.BatchNorm2d(128),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(in_channels=128, out_channels=128, kernel_size=3, padding=1),
+            nn.ReLU(inplace=True),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+            nn.Dropout2d(p=0.05),
+
+            # Conv Layer block 3
+            nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, padding=1),
+            nn.BatchNorm2d(256),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(in_channels=256, out_channels=256, kernel_size=3, padding=1),
+            nn.ReLU(inplace=True),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+        )
+
+
+        self.fc_layer = nn.Sequential(
+            nn.Dropout(p=0.1),
+            nn.Linear(4096, 1024),
+            nn.ReLU(inplace=True),
+            nn.Linear(1024, 512),
+            nn.ReLU(inplace=True),
+            nn.Dropout(p=0.1),
+            nn.Linear(512, 10)
+        )
+
+
+    def forward(self, x):
+        """Perform forward."""
+        
+        # conv layers
+        x = self.conv_layer(x)
+        
+        # flatten
+        x = x.view(x.size(0), -1)
+        
+        # fc layer
+        x = self.fc_layer(x)
+
+        return x
+
+
+
+model2 =CNN()	
+
+
+
+
+def train_CNN(model, train_loader, test_loader):
+    if use_cuda:
+        model = model.cuda()
+
+    # define the loss function
+    criterion = nn.CrossEntropyLoss(reduction='sum')
+    # choose an optimizer
+    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=L2_lambda)
+    start = time.time()
+    for e in range(nEpochs):
+        total = 0
+        correct = 0
+        train_loss = 0.0
+        
+        model.train()
+        for batch_idx, input in enumerate(train_loader,0):
+            # get the inputs
+            data, target = input
+            data, target = cuda(data), cuda(target)
+            data, target = Variable(data), Variable(target)
+            # ============ Forward ============
+            
+            output = model(data)
+            loss = criterion(output, target)
+
+            # ============ Backward ============
+
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+            total += len(data)
+
+            # ============ Logging ============
+            train_loss += loss.data.item()
+            if i % 2000 == 1999:  # print every 500 mini-batches
+                    print('[%d, %5d] loss: %.4f' %
+                          (epoch, i, running_loss / 500))
+                    running_loss = 0.0
+                    _, predicted = torch.max(outputs.data, 1)
+                    total += labels.size(0)
+                    correct += (predicted == labels).sum().item()
+                    print('Accuracy of the network on the %d tran images: %.3f %%' % (total,
+                            100.0 * correct / total))
+                    total = 0
+                    correct = 0
+                    torch.save({'epoch':epoch,
+                                'model_state_dict':net.state_dict(),
+                                'optimizer_state_dict':optimizer.state_dict(),
+                                'loss':loss
+                                },path)
+        
+        
+        print("finished training")
+
+        correct = 0
+        test_total = 0
+        test_loss =0
+        with torch.no_grad():
+            for batch_idx, input in enumerate(test_loader):
+                # get the inputs
+                data, target = input
+                data, target = data.to(device),target.to(device)
+                output = model(data)
+                loss = criterion(output, target)
+                
+                test_total += len(data)
+                test_loss += loss.data.item()
+                pred = output.argmax(dim=1, keepdim=True)  # get the index of the max value
+                correct += pred.eq(target.view_as(pred)).sum().item() # count correct items
+
+        print('Accuracy of the network on the 10000 test images: %.3f %%' % (
+                100*correct/test_total))
