@@ -1,4 +1,4 @@
-## This project is based on the SEMEVAL 2019 TASK6 
+-- This project is based on the SEMEVAL 2019 TASK6 
 
 ## Task6: Identifying and Categorizing Offensive Language in Social Media [link](https://competitions.codalab.org/competitions/20011)
 
@@ -9,6 +9,8 @@ Discriminate between offensive (OFF) and not offensive (NOT) posts in Twitter
        Offensive (OFF): Posts that contain profanity or a targeted offense  (insults, threats, and posts containing profane language or swear words)
 
 #### [participating teams' result](https://arxiv.org/pdf/1903.08983.pdf)
+
+#### [data](https://github.com/JM3309/cs_576/tree/master/projects/data)
 
 #### Model:
     *  GRU 
