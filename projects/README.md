@@ -28,4 +28,4 @@ Discriminate between offensive (OFF) and not offensive (NOT) posts in Twitter
 
 ### 4.[Working paper with results](https://github.com/JM3309/cs_576/blob/master/projects/Final%20Write-Up%20COSC576%20Project.pdf)
 
-### 5.[participating teams' result](https://arxiv.org/pdf/1903.08983.pdf)
+### 5.[Other participating teams' result](https://arxiv.org/pdf/1903.08983.pdf)
