@@ -1,8 +1,8 @@
--- This project is based on the SEMEVAL 2019 TASK6 
+ This project is based on the SEMEVAL 2019 TASK6 
 
 ## Task6: Identifying and Categorizing Offensive Language in Social Media [link](https://competitions.codalab.org/competitions/20011)
 
-#### Task description:
+### Task description:
 
 Discriminate between offensive (OFF) and not offensive (NOT) posts in Twitter
        Not Offensive (NOT): Posts that do not contain offense or profanity
@@ -17,5 +17,5 @@ Discriminate between offensive (OFF) and not offensive (NOT) posts in Twitter
     *  Bi-LSTM
     *  BERT
 
-#### Working paper with results: 
+#### Working paper with results: [](https://github.com/JM3309/cs_576/blob/master/projects/Final%20Write-Up%20COSC576%20Project.pdf)
 
