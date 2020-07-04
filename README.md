@@ -2,7 +2,7 @@
 
 This course will introduce the student to neural networks,explain different neural network architectures, and then demonstrate the use of these neural networks on a wide array of tasks. As each task is introduced, neural network techniques that apply to this task will be explained and demonstrated. 
 
-### Topic: 
+### Topic include: 
 * Basic Structure of Neural Nets, PyTorch
 * MSE - feed forward, non-linear functions, loss functions
 * MSE – backpropagation, optimization
@@ -26,3 +26,7 @@ This course will introduce the student to neural networks,explain different neur
 * BERT – applications
 * Intro to Reinforcement Learning
 * Intro to Deep Reinforcement Learning
+
+### [Project](https://github.com/JM3309/cs_576/tree/master/projects)
+
+### [Assignments](https://github.com/JM3309/cs_576/tree/master/assignments)
