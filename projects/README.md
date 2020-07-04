@@ -6,9 +6,9 @@
 
 Discriminate between offensive (OFF) and not offensive (NOT) posts in Twitter
 
-&emsp;&emsp;Not Offensive (NOT): Posts that do not contain offense or profanity
+&emsp;&emsp;-Not Offensive (NOT): Posts that do not contain offense or profanity
        
-&emsp;&emsp;Offensive (OFF): Posts that contain profanity or a targeted offense  (insults, threats, and posts containing profane language or swear words)
+&emsp;&emsp;-Offensive (OFF): Posts that contain profanity or a targeted offense  (insults, threats, and posts containing profane language or swear words)
 
 
 ### 2.[data](https://github.com/JM3309/cs_576/tree/master/projects/data)
@@ -20,7 +20,7 @@ Discriminate between offensive (OFF) and not offensive (NOT) posts in Twitter
 
 ### 3.Model:
 
-&emsp;&emsp;- GRU 
+&emsp;&emsp; #### GRU 
 
 &emsp;&emsp;- Bi-LSTM
 
