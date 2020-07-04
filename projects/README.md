@@ -18,7 +18,7 @@ Discriminate between offensive (OFF) and not offensive (NOT) posts in Twitter
 | NOT    |  8840    |   620  |  9460  |
 | Total  |  13240   |   860  |  14100 |
 
-### 3.Model:
+### 3.Model: binary classification model
 
 &emsp;&emsp; - [GRU](https://github.com/JM3309/cs_576/blob/master/projects/code/RNN_GRU.ipynb) 
 
