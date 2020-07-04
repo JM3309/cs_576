@@ -6,7 +6,7 @@
 
 Discriminate between offensive (OFF) and not offensive (NOT) posts in Twitter
 
->>>>Not Offensive (NOT): Posts that do not contain offense or profanity
+&ensp;Not Offensive (NOT): Posts that do not contain offense or profanity
        
 >>>>Offensive (OFF): Posts that contain profanity or a targeted offense  (insults, threats, and posts containing profane language or swear words)
 
