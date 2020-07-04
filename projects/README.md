@@ -20,11 +20,11 @@ Discriminate between offensive (OFF) and not offensive (NOT) posts in Twitter
 
 ### 3.Model:
 
-&emsp;&emsp; #### GRU 
+&emsp;&emsp; - [GRU](https://github.com/JM3309/cs_576/blob/master/projects/code/RNN_GRU.ipynb) 
 
 &emsp;&emsp;- Bi-LSTM
 
-&emsp;&emsp;- BERT
+&emsp;&emsp;- [BERT](https://github.com/JM3309/cs_576/blob/master/projects/code/BERT.ipynb)
 
 ### 4.[Working paper with results](https://github.com/JM3309/cs_576/blob/master/projects/Final%20Write-Up%20COSC576%20Project.pdf)
 
