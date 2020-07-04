@@ -15,5 +15,5 @@ Discriminate between offensive (OFF) and not offensive (NOT) posts in Twitter
     *  Bi-LSTM
     *  BERT
 
-#### Working paper with results: []()
+#### Working paper with results: 
 
