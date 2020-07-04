@@ -22,7 +22,7 @@ Discriminate between offensive (OFF) and not offensive (NOT) posts in Twitter
 
 &emsp;&emsp; - [GRU](https://github.com/JM3309/cs_576/blob/master/projects/code/RNN_GRU.ipynb) 
 
-&emsp;&emsp;- Bi-LSTM
+&emsp;&emsp;- [LSTM](https://github.com/JM3309/cs_576/blob/master/projects/code/RNN_LSTM.ipynb)
 
 &emsp;&emsp;- [BERT](https://github.com/JM3309/cs_576/blob/master/projects/code/BERT.ipynb)
 
